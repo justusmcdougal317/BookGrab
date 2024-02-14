@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'; // Import React, useState, and useEffect
 import {
   Container,
   Col,
@@ -18,8 +18,9 @@ const SearchBooks = () => {
   const [savedBookIds, setSavedBookIds] = useState(getSavedBookIds());
 
   useEffect(() => {
-    return () => saveBookIds(savedBookIds);
-  });
+    // Save book ids to localStorage when savedBookIds state changes
+    saveBookIds(savedBookIds);
+  }, [savedBookIds]); // Add savedBookIds as dependency to useEffect to trigger when it changes
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
